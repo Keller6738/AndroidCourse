@@ -33,12 +33,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         btnBack = findViewById(R.id.imgBack);
         btnBack.setOnClickListener(this);
 
-        Intent in = getIntent();
+        Intent intent = getIntent();
         Bundle extras;
         String player1 = "!!!!", player2 = "$$$$";
 
-        if (in != null && in.getExtras() != null) {
-            extras = in.getExtras();
+        if (intent != null && intent.getExtras() != null) {
+            extras = intent.getExtras();
             player1 = extras.getString("NAME1");
             player2 = extras.getString("NAME2");
         }
