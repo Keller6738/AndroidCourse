@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Memory2024</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_2nd_player_name" />
+    <string name="enter_1st_player_name">enter_1st_player_name</string>
+    <string name="enter_second_player_name">enter second player name</string>
+    <string name="enter_first_player_name">enter first player name</string>
+    <string name="start">START</string>
+    <string name="back">Back</string>
+    <string name="lights">אורגן אורות</string>
+</resources>
