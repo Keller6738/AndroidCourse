@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvName1, tvName2;
     private ImageButton btnBack;
 
+    private ImageView[][] cards;
+
+    private GameManager gameManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +31,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        gameManager = new GameManager(this);
 
         tvName1 = findViewById(R.id.tvName1);
         tvName2 = findViewById(R.id.tvName2);
@@ -45,6 +52,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         tvName1.setText(player1);
         tvName2.setText(player2);
+
+        this.cards = new ImageView[4][5];
     }
 
     @Override
