@@ -16,19 +16,19 @@ public class GameManager {
     }
 
     private void restartBoard() {
-        ArrayList<Integer> nums = new ArrayList<>();
+        ArrayList<Integer> boardShuffler = new ArrayList<>();
         int x;
 
         for (int i = 0; i < 10; i++) {
-            nums.add(i);
-            nums.add(i);
+            boardShuffler.add(i);
+            boardShuffler.add(i);
         }
 
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
-                x = rnd.nextInt(nums.size());
-                this.board[i][j] = nums.get(x);
-                nums.remove(x);
+                x = rnd.nextInt(boardShuffler.size());
+                this.board[i][j] = boardShuffler.get(x);
+                boardShuffler.remove(x);
             }
         }
     }
