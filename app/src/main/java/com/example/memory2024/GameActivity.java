@@ -86,7 +86,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 cards[i][j].setOnClickListener(this);
             }
         }
-
     }
 
     private void restartBoardView() {
