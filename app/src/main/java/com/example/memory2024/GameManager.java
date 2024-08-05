@@ -13,9 +13,10 @@ public class GameManager {
     public GameManager(GameActivity activity) {
         this.board = new int[4][5];
         this.gameActivity = activity;
+        restartBoard();
     }
 
-    private void restartBoard() {
+    public void restartBoard() {
         ArrayList<Integer> boardShuffler = new ArrayList<>();
         int x;
 
@@ -33,7 +34,18 @@ public class GameManager {
         }
     }
 
-    public int getPickNum(int i, int j) {
+    public String printMat() {
+        String str = "";
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                str += board[i][j] +" ";
+            }
+            str += "\n";
+        }
+        return str;
+    }
+
+    public int getPickedNum(int i, int j) {
         return board[i][j];
     }
 }
