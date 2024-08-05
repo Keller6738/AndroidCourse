@@ -21,61 +21,69 @@
         app:srcCompat="@drawable/left_arrow"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tvName1"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name1"
-        android:textColor="#FF9800"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvName2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9">
+
+        <TextView
+            android:id="@+id/tvName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="name1"
+            android:textColor="#FF9800"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="score: 0"
+            android:textAlignment="center"
+            android:textColor="#FF9800"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.9">
 
-    <TextView
-        android:id="@+id/tvName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="name2"
-        android:textColor="#FF9800"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        <TextView
+            android:id="@+id/tvName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="name2"
+            android:textColor="#FF9800"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="score: 0"
-        android:textColor="#FF9800"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName1"
-        app:layout_constraintVertical_bias="0.3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="score: 0"
-        android:textColor="#FF9800"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/tvName2"
-        app:layout_constraintVertical_bias="0.263" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="score: 0"
+            android:textColor="#FF9800"
+            android:textSize="30sp" />
+    </LinearLayout>
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -89,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.35"
         tools:ignore="MissingConstraints">
 
