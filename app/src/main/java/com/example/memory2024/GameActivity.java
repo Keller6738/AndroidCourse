@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -137,7 +138,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void couple(int card) {
-        m_players[m_turn].addCouple();
+        m_players[m_turn].addCouple(card);
         m_players[m_turn].setScore();
         switch (m_turn) {
             case 0:

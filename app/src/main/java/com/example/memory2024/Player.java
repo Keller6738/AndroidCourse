@@ -28,4 +28,11 @@ public class Player {
     public void addCouple(int card) {
         m_cards.add(card);
     }
+
+    @Override
+    public String toString() {
+        return "name: " + m_name + "\n" +
+                "score: " + m_score + "\n" +
+                m_cards.toString();
+    }
 }
