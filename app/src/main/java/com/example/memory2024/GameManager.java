@@ -48,4 +48,11 @@ public class GameManager {
     public int getPickedNum(int i, int j) {
         return board[i][j];
     }
+
+    public boolean isCouple(int i1, int j1,
+                             int i2, int j2) {
+        if (i1 == -1 || i2 == -1)
+            return false;
+        return getPickedNum(i1, j1) == getPickedNum(i2, j2);
+    }
 }
