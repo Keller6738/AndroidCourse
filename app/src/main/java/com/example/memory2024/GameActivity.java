@@ -2,11 +2,14 @@ package com.example.memory2024;
 
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.rgb;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -88,6 +91,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         m_gameManager = new GameManager(this);
         Toast.makeText(getApplicationContext(), m_gameManager.printMat(), Toast.LENGTH_LONG).show();
+        Log.d("board", m_gameManager.printMat());
 
         m_players = new Player[2];
         m_players[0] = new Player(player1);
@@ -114,6 +118,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < m_cards.length; i++) {
             for (int j = 0; j < m_cards[i].length; j++) {
                 m_cards[i][j].setImageResource(R.drawable.spongebob);
+                m_cards[i][j].setVisibility(VISIBLE);
             }
         }
     }
@@ -139,6 +144,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void couple(int card) {
         m_players[m_turn].addCouple(card);
         m_players[m_turn].setScore();
+        m_cards[x1][y1].setVisibility(INVISIBLE);
+        m_cards[x2][y2].setVisibility(INVISIBLE);
         switch (m_turn) {
             case 0:
                 tvScore1.setText("score: " + m_players[m_turn].getScore());
@@ -203,11 +210,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             y2 = j;
                             clicks++;
                             if (m_gameManager.isCouple(x1, y1, x2, y2)) {
-                                couple(m_gameManager.getPickedNum(x1, y1));
+                                handler.postDelayed(
+                                        () -> couple(m_gameManager.getPickedNum(x1, y1)),
+                                        500
+                                );
                             } else {
                                 handler.postDelayed(
                                         this::notCouple,
-                                        2000
+                                        1000
                                 );
                             }
                         }
