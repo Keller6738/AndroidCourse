@@ -136,7 +136,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void couple() {
+    private void couple(int card) {
+        m_players[m_turn].addCouple();
         m_players[m_turn].setScore();
         switch (m_turn) {
             case 0:
@@ -202,7 +203,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             y2 = j;
                             clicks++;
                             if (m_gameManager.isCouple(x1, y1, x2, y2)) {
-                                couple();
+                                couple(m_gameManager.getPickedNum(x1, y1));
                             } else {
                                 handler.postDelayed(
                                         this::notCouple,
