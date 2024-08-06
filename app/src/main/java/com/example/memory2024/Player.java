@@ -18,7 +18,7 @@ public class Player {
     }
 
     public void setScore() {
-        this.m_score ++;
+        this.m_score++;
     }
 
     public void zeroScore() {

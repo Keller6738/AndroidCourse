@@ -1,13 +1,12 @@
 package com.example.memory2024;
 
-import static android.graphics.Color.*;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.rgb;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,7 +43,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Player[] m_players;
     int m_turn = 0;
 
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     private int clicks = 0;
     private int x1 = -1, y1 = -1, x2 = -1, y2 = -1;

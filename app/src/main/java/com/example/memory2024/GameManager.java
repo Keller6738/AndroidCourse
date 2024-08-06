@@ -38,7 +38,7 @@ public class GameManager {
         String str = "";
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                str += board[i][j] +" ";
+                str += board[i][j] + " ";
             }
             str += "\n";
         }
@@ -50,7 +50,7 @@ public class GameManager {
     }
 
     public boolean isCouple(int i1, int j1,
-                             int i2, int j2) {
+                            int i2, int j2) {
         if (i1 == -1 || i2 == -1)
             return false;
         return getPickedNum(i1, j1) == getPickedNum(i2, j2);
