@@ -12,4 +12,20 @@ public class Player {
         this.m_score = 0;
         this.m_cards = new ArrayList<>();
     }
+
+    public int getScore() {
+        return m_score;
+    }
+
+    public void setScore() {
+        this.m_score ++;
+    }
+
+    public void zeroScore() {
+        m_score = 0;
+    }
+
+    public void addCouple(int card) {
+        m_cards.add(card);
+    }
 }
