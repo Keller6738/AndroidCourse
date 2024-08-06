@@ -35,6 +35,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private GameManager gameManager;
 
+    private Player[] players;
+    int turn = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +48,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        gameManager = new GameManager(this);
-        Toast.makeText(getApplicationContext(), gameManager.printMat(), Toast.LENGTH_LONG).show();
 
         tvName1 = findViewById(R.id.tvName1);
         tvName2 = findViewById(R.id.tvName2);
@@ -72,6 +72,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         tvName1.setText(player1);
         tvName2.setText(player2);
+
+        gameManager = new GameManager(this);
+        Toast.makeText(getApplicationContext(), gameManager.printMat(), Toast.LENGTH_LONG).show();
+
+        players = new Player[2];
+        players[0] = new Player(player1);
+        players[1] = new Player(player2);
 
         cards = new ImageButton[4][5];
 
