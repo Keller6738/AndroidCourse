@@ -8,79 +8,37 @@
     android:background="#03A9F4"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/imgBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        app:srcCompat="@drawable/left_arrow"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tvLights"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Memory Game"
-        android:textColor="#FF9800"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
-
-    <Button
-        android:id="@+id/btmStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="START"
-        android:textSize="75sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.5" />
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btmStart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLights"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/etName1"
+        <Button
+            android:id="@+id/btnMemory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="40dp"
-            android:ems="10"
-            android:hint="Enter 1st player's name"
-            android:inputType="text"
-            android:textSize="30sp"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+            android:layout_marginBottom="50sp"
+            android:text="Memory Game"
+            android:textSize="35sp" />
 
-        <EditText
-            android:id="@+id/etName2"
+        <Button
+            android:id="@+id/btnTtt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:ems="10"
-            android:hint="Enter 2nd player's name"
-            android:inputType="text"
-            android:textSize="30sp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_marginBottom="50sp"
+            android:text="Tic Tac Toe"
+            android:textSize="35sp" />
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            android:textSize="35sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

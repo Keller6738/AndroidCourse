@@ -1,4 +1,4 @@
-package com.example.memory2024;
+package com.example.memory2024.memory_game;
 
 import java.util.ArrayList;
 

@@ -1,14 +1,9 @@
 package com.example.memory2024;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,13 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Locale;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnPlay;
-    private ImageButton btnBack;
-    private EditText edName1, edName2;
-    private TextToSpeech textToSpeech;
+    private Button btnMemory, btnTtt, btnExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,48 +25,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        btnPlay = findViewById(R.id.btmStart);
-        btnPlay.setOnClickListener(this);
-
-        btnBack = findViewById(R.id.imgBack);
-        btnBack.setOnClickListener(this);
-
-        edName1 = findViewById(R.id.etName1);
-        edName2 = findViewById(R.id.etName2);
-
-        textToSpeech = new TextToSpeech(getApplicationContext(), i -> {
-            if (i == TextToSpeech.SUCCESS) {
-                int lang = textToSpeech.setLanguage(Locale.ENGLISH);
-            }
-        });
+        btnMemory = findViewById(R.id.btnMemory);
+        btnMemory.setOnClickListener(this);
+        btnTtt = findViewById(R.id.btnTtt);
+        btnTtt.setOnClickListener(this);
+        btnExit = findViewById(R.id.btnExit);
+        btnExit.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        String name1 = edName1.getText().toString().trim();
-        String name2 = edName2.getText().toString().trim();
-        if (view.getId() == btnPlay.getId()) {
-            if (name1.isEmpty() ||
-                    name2.isEmpty() ||
-                    name1.equals(name2)) {
-                new AlertDialog.Builder(this)
-                        .setTitle("ERROR!!")
-                        .setMessage("User names are wrong!")
-                        .setNeutralButton("ok", (dialogInterface, i) -> {
-                        })
-                        .setIcon(R.drawable.error)
-                        .show();
-            } else {
-                textToSpeech.speak("Good Luck, " + name1 + "and" + name2,
-                        TextToSpeech.QUEUE_FLUSH, null);
-
-                Intent intent = new Intent(this, GameActivity.class);
-                intent.putExtra("NAME1", name1);
-                intent.putExtra("NAME2", name2);
-                startActivity(intent);
-            }
-        } else if (view.getId() == btnBack.getId()) {
-            Toast.makeText(getApplicationContext(), " Back", Toast.LENGTH_LONG).show();
+        Intent intent;
+        if (view.getId() == btnMemory.getId()) {
+            intent = new Intent(this, OpenActivity.class);
+            intent.putExtra("game", true);
+            startActivity(intent);
+        }
+        if (view.getId() == btnTtt.getId()) {
+            intent = new Intent(this, OpenActivity.class);
+            intent.putExtra("game", false);
+            startActivity(intent);
+        }
+        if (view.getId() == btnExit.getId()) {
+            System.exit(0);
         }
     }
 }

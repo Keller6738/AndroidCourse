@@ -1,4 +1,4 @@
-package com.example.memory2024;
+package com.example.memory2024.memory_game;
 
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.rgb;
@@ -22,7 +22,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+import com.example.memory2024.MainActivity;
+import com.example.memory2024.OpenActivity;
+import com.example.memory2024.R;
+
+public class MemoryGameActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvName1, tvScore1, tvName2, tvScore2;
     private ImageButton btnBack;
     private Button btnRestart, btnShowCards;
@@ -41,7 +45,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             R.drawable.car9,
     };
 
-    private GameManager m_gameManager;
+    private MemoryGameManager m_gameManager;
 
     private Player[] m_players;
     int m_turn = 0;
@@ -55,7 +59,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_memory_game);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -89,8 +93,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         tvName1.setText(player1);
         tvName2.setText(player2);
 
-        m_gameManager = new GameManager(this);
-        Toast.makeText(getApplicationContext(), m_gameManager.printMat(), Toast.LENGTH_LONG).show();
+        m_gameManager = new MemoryGameManager();
         Log.d("board", m_gameManager.printMat());
 
         m_players = new Player[2];

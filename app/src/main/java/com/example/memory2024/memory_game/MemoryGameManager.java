@@ -1,18 +1,16 @@
-package com.example.memory2024;
+package com.example.memory2024.memory_game;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameManager {
+public class MemoryGameManager {
     private Random rnd = new Random();
 
-    private int[][] board;
+    private int[][] m_board;
 
-    private GameActivity gameActivity;
 
-    public GameManager(GameActivity activity) {
-        this.board = new int[4][5];
-        this.gameActivity = activity;
+    public MemoryGameManager() {
+        this.m_board = new int[4][5];
         restartBoard();
     }
 
@@ -25,10 +23,10 @@ public class GameManager {
             boardShuffler.add(i);
         }
 
-        for (int i = 0; i < this.board.length; i++) {
-            for (int j = 0; j < this.board[i].length; j++) {
+        for (int i = 0; i < this.m_board.length; i++) {
+            for (int j = 0; j < this.m_board[i].length; j++) {
                 x = rnd.nextInt(boardShuffler.size());
-                this.board[i][j] = boardShuffler.get(x);
+                this.m_board[i][j] = boardShuffler.get(x);
                 boardShuffler.remove(x);
             }
         }
@@ -36,9 +34,9 @@ public class GameManager {
 
     public String printMat() {
         String str = "";
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                str += board[i][j] + " ";
+        for (int i = 0; i < m_board.length; i++) {
+            for (int j = 0; j < m_board[i].length; j++) {
+                str += m_board[i][j] + " ";
             }
             str += "\n";
         }
@@ -46,7 +44,7 @@ public class GameManager {
     }
 
     public int getPickedNum(int i, int j) {
-        return board[i][j];
+        return m_board[i][j];
     }
 
     public boolean isCouple(int i1, int j1,
