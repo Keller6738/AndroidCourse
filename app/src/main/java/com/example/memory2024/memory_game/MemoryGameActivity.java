@@ -253,22 +253,12 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
                             clicks++;
                             if (m_gameManager.isCouple(x1, y1, x2, y2)) {
                                 handler.postDelayed(
-                                        () -> {
-                                            couple(m_gameManager.getPickedNum(x1, y1));
-                                            if (dialog.isShowing()) {
-                                                dialog.cancel();
-                                            }
-                                        },
-                                        1000
+                                        () -> couple(m_gameManager.getPickedNum(x1, y1)),
+                                        500
                                 );
                             } else {
                                 handler.postDelayed(
-                                        () -> {
-                                            notCouple();
-                                            if (dialog.isShowing()) {
-                                                dialog.cancel();
-                                            }
-                                        },
+                                        this::notCouple,
                                         1000
                                 );
                             }
