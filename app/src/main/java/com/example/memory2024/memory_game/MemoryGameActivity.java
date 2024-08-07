@@ -5,6 +5,7 @@ import static android.graphics.Color.rgb;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.memory2024.MainActivity;
-import com.example.memory2024.OpenActivity;
 import com.example.memory2024.R;
 
 public class MemoryGameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,8 +30,13 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
     private ImageButton btnBack;
     private Button btnRestart, btnShowCards;
 
+    private Dialog dialog;
+    private TextView tvDname;
+    private Button btnDback;
+    private ImageButton[] m_selfButtons;
+
     private ImageButton[][] m_cards;
-    private final int[] pictures = new int[]{
+    private final int[] m_pictures = new int[]{
             R.drawable.car0,
             R.drawable.car1,
             R.drawable.car2,
@@ -114,6 +118,8 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
             }
         }
 
+        m_selfButtons = new ImageButton[10];
+
         tvName1.setBackgroundColor(GREEN);
     }
 
@@ -171,6 +177,40 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
         clicks = 0;
     }
 
+    public void playersHand() {
+        Log.d("player", m_players[this.m_turn].toString());
+        for (int i = 0; i < m_players[this.m_turn].getCardsNumber(); i++)
+            m_selfButtons[i].setImageResource(m_pictures[m_players[this.m_turn].getCard(i)]);
+        for (int i = m_players[this.m_turn].getCardsNumber(); i < 10; i++)
+            m_selfButtons[i].setVisibility(View.INVISIBLE);
+    }
+
+    public void createDialog() {
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_cards);
+        dialog.setTitle("Choose a card");
+        dialog.setCancelable(true);
+
+        tvDname = dialog.findViewById(R.id.tvDName);
+        tvDname.setText(m_players[this.m_turn].getName());
+        btnDback = dialog.findViewById(R.id.btnBackToGame);
+        btnDback.setOnClickListener(view -> dialog.cancel());
+
+        String str = "";
+        int resId;
+        for (int i = 0; i < 10; i++) {
+            str = "imgCard" + i;
+            resId = getResources().getIdentifier(str, "id", getPackageName());
+            m_selfButtons[i] = dialog.findViewById(resId);
+            m_selfButtons[i].setVisibility(VISIBLE);
+        }
+
+        playersHand();
+
+        dialog.show();
+    }
+
+
     @Override
     public void onClick(View view) {
         Intent intent;
@@ -188,9 +228,8 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
                 changeTurn();
             }
         } else if (view.getId() == btnShowCards.getId()) {
-            Toast.makeText(getApplicationContext(), m_gameManager.printMat(), Toast.LENGTH_LONG).show();
+            createDialog();
         }
-
 
         boolean found = false;
 
@@ -200,26 +239,36 @@ public class MemoryGameActivity extends AppCompatActivity implements View.OnClic
                     if (view.getId() == m_cards[i][j].getId()) {
                         if (clicks == 0) {
                             found = true;
-                            m_cards[i][j].setImageResource(pictures[m_gameManager.getPickedNum(i, j)]);
+                            m_cards[i][j].setImageResource(m_pictures[m_gameManager.getPickedNum(i, j)]);
                             m_cards[i][j].setClickable(false);
                             x1 = i;
                             y1 = j;
                             clicks++;
                         } else if (clicks == 1) {
                             found = true;
-                            m_cards[i][j].setImageResource(pictures[m_gameManager.getPickedNum(i, j)]);
+                            m_cards[i][j].setImageResource(m_pictures[m_gameManager.getPickedNum(i, j)]);
                             m_cards[i][j].setClickable(false);
                             x2 = i;
                             y2 = j;
                             clicks++;
                             if (m_gameManager.isCouple(x1, y1, x2, y2)) {
                                 handler.postDelayed(
-                                        () -> couple(m_gameManager.getPickedNum(x1, y1)),
-                                        500
+                                        () -> {
+                                            couple(m_gameManager.getPickedNum(x1, y1));
+                                            if (dialog.isShowing()) {
+                                                dialog.cancel();
+                                            }
+                                        },
+                                        1000
                                 );
                             } else {
                                 handler.postDelayed(
-                                        this::notCouple,
+                                        () -> {
+                                            notCouple();
+                                            if (dialog.isShowing()) {
+                                                dialog.cancel();
+                                            }
+                                        },
                                         1000
                                 );
                             }

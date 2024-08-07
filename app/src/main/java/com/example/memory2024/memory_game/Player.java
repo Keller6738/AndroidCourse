@@ -21,6 +21,18 @@ public class Player {
         this.m_score++;
     }
 
+    public String getName() {
+        return m_name;
+    }
+
+    public int getCard(int i) {
+        return m_cards.get(i);
+    }
+
+    public int getCardsNumber() {
+        return m_cards.size();
+    }
+
     public void zeroScore() {
         m_score = 0;
     }

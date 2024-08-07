@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="400dp"
+    android:layout_height="280dp"
+    android:layout_gravity="center"
+    android:background="#fffacc"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#D6E1E8"
+        android:gravity="center_horizontal"
+        android:shadowDy="6"
+        android:shadowRadius="6"
+        android:text="Your Cards"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tvDName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:shadowDx="-6"
+        android:shadowDy="6"
+        android:shadowRadius="6"
+        android:text="Player Name"
+        android:textAlignment="center"
+        android:textColor="#91A0F6"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="408dp"
+        android:layout_height="171dp"
+        android:layout_gravity="center"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="5"
+            android:layoutDirection="ltr"
+            android:rowCount="2">
+
+            <ImageButton
+                android:id="@+id/imgCard0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+
+            <ImageButton
+                android:id="@+id/imgCard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+
+            <ImageButton
+                android:id="@+id/imgCard9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:backgroundTint="#00111111"
+                android:contentDescription=" "
+                app:srcCompat="@drawable/spongebob" />
+        </GridLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBackToGame"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:text="Back To Game" />
+
+
+</LinearLayout>
