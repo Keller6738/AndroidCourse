@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player {
     private final String m_name;
     private int m_score;
-    private ArrayList<Integer> m_cards;
+    private final ArrayList<Integer> m_cards;
 
     public Player(String name) {
         this.m_name = name;

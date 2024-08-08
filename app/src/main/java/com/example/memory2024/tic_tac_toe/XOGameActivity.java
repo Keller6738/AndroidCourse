@@ -147,7 +147,7 @@ public class XOGameActivity extends AppCompatActivity implements View.OnClickLis
                         } else if (m_gameManager.checkDraw() && !m_gameManager.checkWin(m_turn)) {
                             new AlertDialog.Builder(this)
                                     .setTitle("DRAW!!!")
-                                    .setMessage("you're boring")
+                                    .setMessage("there is tie!")
                                     .setNeutralButton("ok", (dialogInterface, i1) -> {
                                     })
                                     .setIcon(R.drawable.meh)
