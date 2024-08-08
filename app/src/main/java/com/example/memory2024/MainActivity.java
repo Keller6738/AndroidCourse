@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerReceiver(new BatteryCheck(), new IntentFilter(ACTION_BATTERY_CHANGED));
             isFirstTime = false;
         }
-
     }
 
     @Override
