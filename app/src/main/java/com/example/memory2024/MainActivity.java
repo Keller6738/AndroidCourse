@@ -1,6 +1,9 @@
 package com.example.memory2024;
 
+import static android.content.Intent.ACTION_BATTERY_CHANGED;
+
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnMemory, btnTtt, btnExit;
+    private static boolean isFirstTime = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTtt.setOnClickListener(this);
         btnExit = findViewById(R.id.btnExit);
         btnExit.setOnClickListener(this);
+
+        if (isFirstTime) {
+            registerReceiver(new BatteryCheck(), new IntentFilter(ACTION_BATTERY_CHANGED));
+            isFirstTime = false;
+        }
+
     }
 
     @Override
